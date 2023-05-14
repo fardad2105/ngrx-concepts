@@ -1,9 +1,24 @@
+import { UserModel } from "src/app/pages/users/model/UserModel";
+import { UsersActionType, UsersActions } from "./users.actions";
+
 export interface UsersState {
-  users: any[];
-  selectedUser: any | null;
-  total: number;
+  users: UserModel[];
+  selectedUser: UserModel | null;
+  total: number | null;
 }
 
-export function usersReducer (state, action) {
+const initUsersState : UsersState = {
+  users: [],
+  selectedUser: null,
+  total: null
+}
+
+export function usersReducer (state: UsersState = initUsersState, action: UsersActions): UsersState {
+  switch (action.type) {
+    case UsersActionType.loadUsers:
+      return state;
+    default:
+      return state
+  }
 
 }
